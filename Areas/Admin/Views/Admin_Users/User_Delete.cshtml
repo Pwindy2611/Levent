@@ -1,0 +1,56 @@
+﻿@model Levent.Models.AdminUser
+
+@{
+    ViewBag.Title = "User_Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>User_Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Recent Tickets</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nickname</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => modelItem.ID_User)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => modelItem.User_Name)
+                                </td>
+                                <td>
+                                    <label class="badge badge-danger">
+                                        @Html.DisplayFor(modelItem => modelItem.Email_User)
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-gradient-primary me-2" />
+                            @Html.ActionLink("Cancel", "User_Control", "Admin_Users", new { @class = "btn btn-light" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </dl>
+</div>

@@ -1,0 +1,40 @@
+﻿@model Levent.Models.AdminUser
+
+@{
+    ViewBag.Title = "LoginAccount";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+@using (Html.BeginForm("LoginAccount", "User"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <main>
+        <div class="form-con">
+            <h2 class="title-form">Đăng nhập</h2>
+            <div class="Main-Login">
+                <form action="" id="login-form">
+                    <div class="form">
+                        <div class="form-text">
+                            <div class="text-top">Bạn chưa có tài khoản? <a href="/User/RegisterUser">Đăng ký</a></div>
+                        </div>
+                        <input name="Email_User" type="text" placeholder="Email hoặc Số điện thoại"><br>
+                        <input name="Password_User" type="password" placeholder="Mật khẩu">
+                        <div class="form-check">
+                            <div class="check">
+                                <input type="checkbox">
+                                <div class="text-bottom">Ghi nhớ tài khoản</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft-form">
+                        <a href="#">Quên mật khẩu</a>
+                        <button class="btn-login">
+                            Đăng nhập
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </main>}

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Levent.Models.AdminUser>
+
+@{
+    ViewBag.Title = "User_Control";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center">LIST USER</h2>
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead class="table-info">
+                <tr>
+                    <th>ID</th>
+                    <th>Nickname</th>
+                    <th>Email</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID_User)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User_Name)
+                        </td>
+                        <td>
+                            <label class="badge badge-danger">
+                                @Html.DisplayFor(modelItem => item.Email_User)
+                            </label>
+                        </td>
+                        <td>
+                            <a href="User_Delete/@item.ID_User" class="text-link-action">Xóa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="User_Detail/@item.ID_User" class="text-link-action">Chi tiết</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

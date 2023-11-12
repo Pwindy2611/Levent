@@ -1,0 +1,62 @@
+﻿@model Levent.Models.AdminUser
+
+@{
+    ViewBag.Title = "User_Edit";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<main>
+    <section class="sec-80">
+        <div class="sec-info">
+            <div class="info-right">
+                <div class="mem">
+                    <div class="wish-head">
+                        <div class="title">Thông tin cá nhân</div>
+                        <hr>
+                        <div class="info">
+                            <form>
+                                <div class="form">
+                                    <div style="display:none" class="vadition__box-wrapper">
+                                        <p class="vadition__box-tittle--input">@Html.LabelFor(model => model.ID_User) </p>
+                                        @Html.EditorFor(model => model.ID_User, new { htmlAttributes = new { placeholder = "Nhap ID_User", @readonly = "readonly" } })
+                                        <p>@Html.ValidationMessageFor(model => model.ID_User)</p>
+                                    </div>
+                                    <label>Họ và tên:</label>
+                                    @*<input type="text" name="Full_Name" placeholder="@Model.Full_Name">*@
+                                    @Html.EditorFor(model => model.Full_Name, new { htmlAttributes = new { @class = "input-edit" } })
+                                    <label>Nickname:</label>
+                                    @*<input type="text" name="User_Name" placeholder="@Model.User_Name">*@
+                                     @Html.EditorFor(model => model.User_Name, new { htmlAttributes = new { @class = "input-edit" } })
+                                    <label>Phone Number:</label>
+                                    @*<input type="number" name="Phone_Number" placeholder="@Model.Phone_Number">*@
+                                    @Html.EditorFor(model => model.Phone_Number, new { htmlAttributes = new { @class = "input-edit" } })
+                                    <label>Address:</label>
+                                    @*<input type="text" name="Address" placeholder="@Model.Address">*@
+                                  @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "input-edit" } })
+                                    <label>Email:</label>
+                                    @*<input type="email" name="Email_User" placeholder="@Model.Email_User">*@
+                                   @Html.EditorFor(model => model.Email_User, new { htmlAttributes = new { @class = "input-edit" } })
+                                    <label>Password:</label>
+                                    @*<input type="password" name="Password_User" placeholder="@Model.Password_User">*@
+                                    @Html.EditorFor(model => model.Password_User, new { htmlAttributes = new { @class = "input-edit" } })
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:space-around;margin-top:20px;">
+                    <button style="height:40px!important" type="submit">Save</button>
+                    <a style="background-color: #515151; color: #fff; width: 200px; height: 30px; font-size: 16px; text-align: center; text-decoration: none; padding-top: 10px; " href="/User/HomeUser/@Model.ID_User">Cancel</a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</main>
+    
+}

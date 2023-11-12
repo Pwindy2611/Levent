@@ -1,0 +1,45 @@
+﻿@model Levent.Models.Product
+
+@{
+    ViewBag.Title = "Product_Detail";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Detail</h2>
+<h4>Rooms</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="card bg-gradient-danger card-img-holder text-white" style="overflow:hidden!important">
+            <div class="card-body" style="text-align:center">
+                <img src="~/_layoutAdmin/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+                <img style="border-radius:0%!important" src="@Url.Content(Model.Img_pro)" height="150" width="200" id="previewImg" />
+                <div style="padding:20px"></div>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    ID<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                @Html.DisplayFor(model => model.ID_Pro, new { @class = "mb-5" })
+                <div style="padding:20px"></div>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    NAME<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                @Html.DisplayFor(model => model.Name_Pro, new { @class = "mb-5" })
+                <div style="padding:20px"></div>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    PRICE<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+                </h4>
+                @Html.DisplayFor(model => model.Price_Pro, new { @class = "mb-5" })
+                <div style="padding:20px"></div>
+                <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+                    IMG-LINK<i style="padding-left:10px" class="mdi mdi-comment-alert-outline"></i>
+                </h4>
+                @Html.DisplayFor(model => model.Img_pro, new { @class = "mb-5" })
+            </div>
+        </div>
+        <div style="padding:20px"></div>
+        <div class="form-actions no-color">
+            @Html.ActionLink("Edit", "Product_Edit", "Admin_Product", new { id = Model.ID_Cate }, new { @class = "btn btn-gradient-primary me-2" })
+            @Html.ActionLink("Cancel", "Product_Control", "Admin_Product", new { @class = "btn btn-light" })
+        </div>
+    </dl>
+</div>

@@ -1,0 +1,50 @@
+﻿@model Levent.Models.AdminUser
+@{
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+@using (Html.BeginForm("RegisterUser", "User", FormMethod.Post, new { enctype = "multipartform/data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <main>
+        <div class="form-con">
+            <h2 class="title-form">Tạo tài khoản</h2>
+            <div class="Main-Login">
+                <form action="" id="login-form">
+                    <div class="form">
+                        <div style="display:none" class="vadition__box-wrapper">
+                            <p class="vadition__box-tittle--input">@Html.LabelFor(model => model.ID_User) </p>
+                            @Html.EditorFor(model => model.ID_User, new { htmlAttributes = new { placeholder = "Nhap ID_User", @readonly = "readonly" } })
+                            <p>@Html.ValidationMessageFor(model => model.ID_User)</p>
+                        </div>
+                        <input type="text" name="User_Name" placeholder="NickName">
+                        <input type="Email" name="Email_User" placeholder="Email">
+                        <input type="number" name="Phone_Number" placeholder="Số điện thoại">
+                        <input type="password" name="Password_User" placeholder="Mật khẩu">
+                        <input type="password" name="ConfirmPassword" placeholder="Xác nhận lại mật khẩu">
+                        <div class="form-check">
+                            <div class="check">
+                                <input type="checkbox">
+                                <div class="text-bottom">
+                                    Tôi đồng ý với các điều khoản và điều kiện,
+                                    chính sách bảo mật và chính sách cookie
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ft-form-rs">
+                        <button type="submit" class="btn-login">
+                            Tạo
+                        </button>
+                        <p style="margin-top:30px;line-height:1.6rem">
+                            Nếu sdt hoặc email của bạn báo đã tồn tại, bấm <a style="text-decoration: none; color: #63c8ff" href="/User/LoginAccount">vào đây</a> và login với sđt hoặc
+                            email đó với một mật khẩu bất kì để kích hoạt tài khoản hoặc liên hệ với
+                            bộ phận cskh của Levents để được hỗ trợ
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </main>
+}

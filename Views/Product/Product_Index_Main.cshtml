@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Levent.Models.Product>
+
+
+
+
+<div class="clo-list">
+    @foreach (var pro in Model)
+    {
+        <div class="clo-4">
+            <div class="item">
+                <div class="img">
+                    <a href="#">
+                        <img src="@Url.Content(pro.Img_pro)" alt="">
+                    </a>
+                </div>
+                <div class="des">
+                    <a href="https://levents.asia/product/levents-classic-regular-polo-white/?c=levents-classic-regular-polo-black">LEVENTS® @pro.Name_Pro</a>
+                    <div class="price" data="price">@pro.Price_Pro,000 vnđ</div>
+                </div>
+            </div>
+        </div>
+     }
+    </div>

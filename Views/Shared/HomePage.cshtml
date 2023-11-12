@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Levent-Clone</title>
+    <link href="~/Assests/css/homepage.css" rel="stylesheet" />
+    <link href="~/Assests/css/shop.css" rel="stylesheet" />
+    <link href="~/Assests/css/FormLogin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="shortcut icon" href="~/Assests/image/levent.png" />
+</head>
+<body>
+    <header class="hd hv-df">
+        <div class="header-banner">LEVENTS LOVE YOU</div>
+        <div class="header-top">
+            <ul>
+                <li style="color:black;margin-top:10px;margin-left:20px">
+                    <span class="menu-icon-bar"><i class="Menu-bar fa-solid fa-bars"></i></span>
+                    <span class="menu-icon-closed"><i style="font-size:1.2rem" class="Menu-closed fa-solid fa-xmark"></i></span>
+                </li>
+                <li>
+                    <a href="#">
+                        <div style="text-align:center" class="hd-logo">
+                            <img src="https://levents.asia/wp-content/uploads/2021/10/logo.png" alt="">
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <div class="hd-list">
+                        <ul>
+                            <li><img style="width: 20px;" src="https://levents.asia/template/assets/images/notification.png" alt=""></li>
+                            <li class="text-header-like">
+                                <div style="width:150px"> <a style="font-size:0.8rem;text-decoration: none; color: #5A5A5A; margin-bottom: 50px;" href="#">Sản phẩm yêu thích</a></div>
+
+                            </li>
+                            <li class="header-bot"><img src="https://levents.asia/template/assets/images/svg/ic-ser.svg" alt=""></li>
+                            <li><img src="https://levents.asia/template/assets/images/svg/ic-cart.svg" alt=""></li>
+                            @{var user = Session["User"] as Levent.Models.AdminUser;}
+                            @{if (user == null)
+                                {
+                                    <li><a href="/User/LoginAccount"><img src="https://levents.asia/template/assets/images/svg/ic-user.svg" alt=""></a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/User/HomeUser"><img src="https://levents.asia/template/assets/images/svg/ic-user.svg" alt=""></a></li>
+                                }
+                            }
+
+                            <li class="header-bot"><img src="https://levents.asia/template/assets/images/svg/ic-vn.svg" alt=""></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="header-bot">
+            <ul>
+                <li><a href="https://levents.asia/about-us/">About Us</a></li>
+                <li>@Html.ActionLink("Cửa hàng", "Index", "Home")</li>
+                <li><a href="https://levents.asia/sale/">Giảm giá</a></li>
+                <li><a href="https://levents.asia/special-collection/">Bộ sưu tập</a></li>
+                <li><a href="https://levents.asia/styling/">Bộ phối</a></li>
+                <li><a href="https://levents.asia/blog/">Bài viết <i class="ti-angle-down"></i></a></li>
+                <li><a href="https://levents.asia/contact/">Liên hệ</a></li>
+                <li><a href="https://levents.asia/customer-care/">Chăm sóc khách hàng <i class="ti-angle-down"></i></a></li>
+                <li><a href="https://levents.asia/recruitment/">Tuyển dụng</a></li>
+            </ul>
+        </div>
+    </header>
+    @RenderBody()
+    <hr>
+    <footer style=" margin: 100px 20px 0 20px;" class="ft">
+        <div class="footer">
+            <div class="con-main">
+                <div class="content">
+                    <div class="ft-title">
+                        <strong>VỀ CHÚNG TÔI</strong>
+                    </div>
+                    <p style="margin: 20px 0 20px 0;">Levents® - Share your color with the world</p>
+                    <p><span style="font-size: 15px;">HỘ KINH DOANH</span> Red Label</p>
+                    <p><span style="font-size: 15px;">GPKD</span> được cấp bởi Cục Cảnh sát QLHC & TTXH</p>
+                    <p>Trụ sở hộ kinh doanh: 842 Sư Vạn Hạnh, Phường 13, Quận 10, <br>Tp. Hồ Chí Minh</p>
+                    <p>Mä só thuê: 41J8031547</p>
+                    <p>Ngày cấp: 06/07/2021</p>
+                    <p>Người đại diện: Nguyễn Trần Duy Khiết</p>
+                    <p>Mã Số thuế cá nhân: 8748861448-001</p>
+                </div>
+            </div>
+            <div class="footer-children">
+                <div class="con">
+                    <div class="contact">
+                        <div class="ft-title">
+                            <strong>LIÊN HỆ</strong>
+                            <p style="margin-top: 30px;">Hotline</p>
+                            <a href="#">1900 633 028</a>
+
+                            <p>Email</p>
+                            <a href="Customercare@levents.asia">Customercare@levents.asia</a>
+
+                            <p>Thứ Hai - Chủ nhật</p>
+                            <p class="inf"><strong style="font-size: 15px; font-weight: 600;">09:30 ~ 21:30</strong></p>
+
+                            <p>Email liên hệ công việc</p>
+                            <a href="business@levents.asia">business@levents.asia</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="con">
+                    <div class="category">
+                        <div class="ft-title">
+                            <strong>DANH MỤC SẢN PHẨM</strong>
+                        </div>
+                        <a href="https://levents.asia/product-category/allshop/">Tất cả</a>
+                        <a href="https://levents.asia/product-category/newarrival/">New Arrival</a>
+                        <a href="https://levents.asia/product-category/ao/">Áo</a>
+                        <a href="https://levents.asia/product-category/quan/">Quần</a>
+                        <a href="https://levents.asia/product-category/outerwear/">Outerwear</a>
+                        <a href="https://levents.asia/product-category/balo/">Ba lô</a>
+                        <a href="https://levents.asia/product-category/phu-kien/">Phụ kiện</a>
+                        <a href="https://levents.asia/product-category/collection/">BST</a>
+                    </div>
+                </div>
+                <div class="con">
+                    <div class="support">
+                        <div class="ft-title">
+                            <strong>HỖ TRỢ</strong>
+                            <p>LÌ VEN FABRIC</p>
+                            <p>Tài khoản</p>
+                            <p>Chính sách vận chuyển</p>
+                            <p>Thanh toán trực tuyến</p>
+                            <p>Chính sách bảo mật</p>
+                            <p>Chính sách bảo hành</p>
+                            <p>Chính sách khiếu nại</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="con">
+                    <div class="shop">
+                        <div class="ft-title">
+                            <strong>CỬA HÀNG</strong>
+                            <p>139E Nguyễn Trãi, Phường Bến <br> Thành, Quận 1, <span style="font-size: 15px;">HCM - COMING <br> SOON</span></p>
+                            <p>842 Sư Vạn Hạnh, Phường 12, <br>Quận 10,<span style="font-size: 15px;"> HCM</span></p>
+                            <p>The New Playground, 04, Quận 1, <br>HCM</p>
+                            <p>54, Mậu Thân, Phường Xuân Khánh,<br> Quận Ninh Kiều, Cần Thơ</p>
+                            <div class="icon">
+                                <p>
+                                    <a href="https://www.facebook.com/Leventsbrand"><i class="ti-facebook"></i></a>
+                                    <a href="https://instagram.com/levents.official?igshid=YmMyMTA2M2Y="><i class="ti-instagram"></i></a>
+                                    <a href="https://youtube.com/channel/UChl4KY_EpOg4GAjrtKlu_vw"><i class="ti-youtube"></i></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-con1">
+            <ul>
+                <li><a href="#">Levents® - Share your color with the world</a></li>
+                <li style="margin-right:20px;display:flex;">
+                    <span style="margin-right:40px;"><a href="https://levents.asia/recruitment/">Tuyển dụng</a></span>
+                    <span><a href="https://levents.asia/term-policies/">Term & Policies</a></span>
+                </li>
+
+            </ul>
+        </div>
+    </footer>
+    <div class="Main-menu-box">
+        <div class="overplay"></div>
+        <div class="menu-box">
+            <div class="menu-box-listmain">
+                <div class="menu-box__child">
+                    <ul class="menu-box__list">
+                        <li class="menu-box-item"><a href="https://levents.asia/about-us/">About Us</a></li>
+                        <li class="menu-box-item"><a href="/home/Index">Cửa hàng</a></li>
+                        <li class="menu-box-item"><a href="https://levents.asia/sale/">Giảm giá</a></li>
+                        <li class="menu-box-item"><a href="https://levents.asia/special-collection/">Bộ sưu tập</a></li>
+                        <li class="menu-box-item"><a href="https://levents.asia/styling/">Bộ phối</a></li>
+                        <li class="menu-box-item"><a href="https://levents.asia/blog/">Bài viết </a></li>
+                        <li class="menu-box-item"><a href="https://levents.asia/contact/">Liên hệ</a></li>
+                        <li class="menu-box-item"><a href="https://levents.asia/customer-care/">Chăm sóc khách hàng <i class="ti-angle-down"></i></a></li>
+                        <li class="menu-box-item"><a href="https://levents.asia/recruitment/">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+                <div class="menu-box-child">
+                    <ul class="menu-box__list">
+                        <li class="menu-box-item">Sản phẩm yêu thích</li>
+                        <li class="menu-box-item">Account</li>
+                        <li class="menu-box-item"><span>Language:</span><img src="https://levents.asia/template/assets/images/svg/ic-vn.svg" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <script>
+        const closed = document.querySelector('.menu-icon-closed')
+        const bar = document.querySelector('.menu-icon-bar')
+        const menu_box = document.querySelector('.Main-menu-box')
+        const overplay = document.querySelector('.overplay')
+        // them class open tren
+        function showmodal() {
+            menu_box.classList.add('open')
+            bar.classList.add('closed')
+            closed.classList.add('open')
+        }
+        function closedmodal() {
+            menu_box.classList.remove('open')
+            bar.classList.remove('closed')
+            closed.classList.remove('open')
+        }
+        bar.addEventListener('click', showmodal)
+        overplay.addEventListener('click', closedmodal)
+        closed.addEventListener('click', closedmodal)
+    </script>
+</body>
+</html>

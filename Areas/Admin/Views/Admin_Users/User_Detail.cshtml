@@ -1,0 +1,53 @@
+﻿@model Levent.Models.AdminUser
+
+@{
+    ViewBag.Title = "User_Detail";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>User_Detail</h2>
+<h4>User</h4>
+<div class="card bg-gradient-danger card-img-holder text-white" style="overflow:hidden!important">
+    <div class="card-body" style="text-align:center">
+        <img src="~/_layoutAdmin/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image">
+        <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+            ID<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+        </h4>
+        @Html.DisplayFor(model => model.ID_User, new { @class = "mb-5" })
+        <div style="padding:20px"></div>
+        <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+            NICKNAME<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+        </h4>
+        @Html.DisplayFor(model => model.User_Name, new { @class = "mb-5" })
+        <div style="padding:20px"></div>
+        <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+            FULLNAME<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+        </h4>
+        @Html.DisplayFor(model => model.Full_Name, new { @class = "mb-5" })
+        <div style="padding:20px"></div>
+        <div style="padding:20px"></div>
+        <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+            PHONE<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+        </h4>
+        @Html.DisplayFor(model => model.Phone_Number, new { @class = "mb-5" })
+        <div style="padding:20px"></div>
+        <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+            ADDRESS<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+        </h4>
+        @Html.DisplayFor(model => model.Address, new { @class = "mb-5" })
+        <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+            Email<i style="padding-left:10px" class="mdi mdi-comment-alert-outline"></i>
+        </h4>
+        @Html.DisplayFor(model => model.Email_User, new { @class = "mb-5" })
+        <div style="padding:20px"></div>
+        <h4 class="font-weight-normal mb-3" style="display:flex;align-items:center;justify-content:center">
+            PASSWORD<i style="padding-left:10px" class="mdi mdi-account-card-details"></i>
+        </h4>
+        @Html.DisplayFor(model => model.Password_User, new { @class = "mb-5" })
+    </div>
+</div>
+<div style="padding:20px"></div>
+
+<div class="form-actions no-color">
+    @Html.ActionLink("Cancel", "User_Control", "Admin_Users", new { @class = "btn btn-light" })
+</div>

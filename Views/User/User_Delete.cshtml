@@ -1,0 +1,16 @@
+﻿@model Levent.Models.AdminUser
+
+@{
+    ViewBag.Title = "User_Delete";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2 style="text-align:center;font-size:3rem;margin:50px 20px;">BẠN MUỐN XOÁ TÀI KHOẢN ?</h2>
+
+    <div style="display:flex; justify-content:space-around;margin-top:20px;">
+        <button style="height:40px!important" type="submit">Delete</button>
+        <a style="background-color: #515151; color: #fff; width: 200px; height: 30px; font-size: 16px; text-align: center; text-decoration: none; padding-top: 10px; " href="/User/HomeUser/@Model.ID_User">Cancel</a>
+    </div>
+}
