@@ -135,59 +135,64 @@
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AdminUser.cs">
-      <DependentUpon>Levent.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs">
-      <DependentUpon>Levent.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Color_De.cs">
-      <DependentUpon>Levent.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Details.cs">
-      <DependentUpon>Levent.tt</DependentUpon>
+    <Compile Include="Models\Detail.cs">
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Levent.Context.cs">
+    <Compile Include="Models\Levent_1Entities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Levent.Context.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Levent.cs">
+    <Compile Include="Models\Levent_1Entities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Levent.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Levent.Designer.cs">
+    <Compile Include="Models\Levent_1Entities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Levent.edmx</DependentUpon>
+      <DependentUpon>Levent_1Entities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Order.cs">
-      <DependentUpon>Levent.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>Levent.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>Levent.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Size_De.cs">
-      <DependentUpon>Levent.tt</DependentUpon>
+      <DependentUpon>Levent_1Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assests\css\detail.css" />
     <Content Include="Assests\css\FormLogin.css" />
     <Content Include="Assests\css\homepage.css" />
     <Content Include="Assests\css\shop.css" />
+    <Content Include="Assests\css\thanhtoan.css" />
+    <Content Include="Assests\image\bang-size.png" />
     <Content Include="Assests\image\levent.png" />
     <Content Include="Assests\image\meo.png" />
     <Content Include="Content\image\add anh.png" />
-    <Content Include="Assests\image\cb896104-97b2-43f4-9beb-4ff690d9731d.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -196,6 +201,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Levent_1Entities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Levent_1Entities.edmx</DependentUpon>
+      <LastGenOutput>Levent_1Entities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Levent_1Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Levent_1Entities.edmx</DependentUpon>
+      <LastGenOutput>Levent_1Entities.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="_LayoutAdmin\.gitignore" />
     <Content Include="_LayoutAdmin\assets\css\style.css" />
@@ -280,25 +295,8 @@
     <Content Include="_LayoutAdmin\partials\_navbar.html" />
     <Content Include="_LayoutAdmin\partials\_sidebar.html" />
     <Content Include="_LayoutAdmin\screenshot.jpg" />
-    <Content Include="Models\Levent.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Levent.edmx</DependentUpon>
-      <LastGenOutput>Levent.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Levent.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Levent.edmx</DependentUpon>
-      <LastGenOutput>Levent.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Levent.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Levent.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Levent.edmx.diagram">
-      <DependentUpon>Levent.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="_LayoutAdmin\.DS_Store" />
     <Content Include="_LayoutAdmin\assets\css\style.css.map" />
@@ -382,6 +380,13 @@
     <Content Include="Areas\Admin\Views\Admin_Product\Product_Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Admin_Product\Product_Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Admin_Product\Product_Edit.cshtml" />
+    <EntityDeploy Include="Models\Levent_1Entities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Levent_1Entities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Levent_1Entities.edmx.diagram">
+      <DependentUpon>Levent_1Entities.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -414,6 +419,9 @@
     <Content Include="Views\User\HomeUser.cshtml" />
     <Content Include="Views\User\User_Edit.cshtml" />
     <Content Include="Views\User\User_Delete.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Product\Products_Detail.cshtml" />
+    <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

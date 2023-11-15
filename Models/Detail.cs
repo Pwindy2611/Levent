@@ -12,13 +12,13 @@ namespace Levent.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Details
+    public partial class Detail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Details()
+        public Detail()
         {
             this.Color_De = new HashSet<Color_De>();
-            this.Order = new HashSet<Order>();
+            this.Orders = new HashSet<Order>();
             this.Size_De = new HashSet<Size_De>();
         }
     
@@ -33,7 +33,7 @@ namespace Levent.Models
         public virtual ICollection<Color_De> Color_De { get; set; }
         public virtual Product Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Size_De> Size_De { get; set; }
     }

@@ -1,0 +1,72 @@
+﻿@model Levent.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+<link href="~/Assests/css/thanhtoan.css" rel="stylesheet" />
+<div class="bc">
+    <div class="con">
+        <ul>
+            <li class="page">Trang chủ </li>
+            <li>/</li>
+            <li class="detail-page">Thanh toán</li>
+        </ul>
+    </div>
+    <div class="sec-80-check">
+        <section>
+            <div class="col-left">
+                <h4 class="sec-title">Thông tin giao hàng</h4>
+                <form>
+                    <div class="form-left">
+                        <div class="form-txt">
+                            <p>Bạn đã có tài khoản?<a href="">Đăng nhập</a></p>
+                        </div>
+                        <div class="col">
+                            <ul>
+                                <li><input type="text" placeholder="Họ và tên"></li>
+                                <li><input type="email" placeholder="Email"></li>
+                                <li><input type="number" placeholder="Số điện thoại"></li>
+                                <li><input type="date" placeholder="Ngày sinh"></li>
+                                <li><input type="text" placeholder="Địa chỉ"></li>
+                                <li><input type="text" placeholder="Tỉnh / Thành phố"></li>
+                                <li><input type="text" placeholder="Quận / Huyện"></li>
+                                <li><input type="text" placeholder="Phường / Xã"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+                <div class="btn">
+                    <div class="left"><a href="">Tiếp tục mua sắm</a></div>
+                    <div class="right"> <a href="">Tiếp tục</a></div>
+                </div>
+            </div>
+            <div class="col-right">
+                <h4 class="sec-title">Giỏ hàng</h4>
+                <form>
+                    <div class="form-right">
+                        <div class="form-cart">
+                            <div class="cart-item">
+                                <div class="cart-img">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="name-info">
+                                    name
+                                </div>
+                                <div class="price-info">
+                                    <p>price</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="thanhtoan">
+                            <p>price</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="clear"></div>
+

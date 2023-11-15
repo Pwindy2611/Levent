@@ -21,6 +21,6 @@ namespace Levent.Models
         public Nullable<int> Status { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
     
-        public virtual Details Details { get; set; }
+        public virtual Detail Detail { get; set; }
     }
 }

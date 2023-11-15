@@ -11,20 +11,15 @@ namespace Levent.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web;
-
+    
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.Details = new HashSet<Details>();
-            Img_pro = "~/Content/image/add anh.png";
+            this.Details = new HashSet<Detail>();
         }
-        [NotMapped]
-        public HttpPostedFileBase UploadImage { get; set; }
+    
         public int ID_Pro { get; set; }
         public string Name_Pro { get; set; }
         public Nullable<int> ID_Cate { get; set; }
@@ -33,6 +28,6 @@ namespace Levent.Models
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Details> Details { get; set; }
+        public virtual ICollection<Detail> Details { get; set; }
     }
 }

@@ -11,15 +11,15 @@ namespace Levent.Areas.Admin.Controllers
 {
     public class Admin_ProductController : Controller
     {
-        Levent_1Entities db = new Levent_1Entities();
+        Levent_1Entities2 db = new Levent_1Entities2();
         // GET: Admin/Admin_Product
         public ActionResult Product_Create(int id = 0)
         {
             Product emp = new Product();
-            var lastemployee = db.Product.OrderByDescending(x => x.ID_Pro).FirstOrDefault();
+            var lastemployee = db.Products.OrderByDescending(x => x.ID_Pro).FirstOrDefault();
             if (id != 0)
             {
-                emp = db.Product.Where(x => x.ID_Pro == id).FirstOrDefault();
+                emp = db.Products.Where(x => x.ID_Pro == id).FirstOrDefault();
             }
             else if (lastemployee == null)
             {
@@ -44,7 +44,7 @@ namespace Levent.Areas.Admin.Controllers
                     pro.Img_pro = "~/Content/image/" + filename;
                     pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
                 }
-                db.Product.Add(pro);
+                db.Products.Add(pro);
                 db.SaveChanges();
                 return RedirectToAction("Product_Control", pro);
             }
@@ -55,23 +55,23 @@ namespace Levent.Areas.Admin.Controllers
         }
         public ActionResult Product_Delete(int id)
         {
-            return View(db.Product.Where(s => s.ID_Pro == id).FirstOrDefault());
+            return View(db.Products.Where(s => s.ID_Pro == id).FirstOrDefault());
         }
         [HttpPost]
         public ActionResult Product_Delete(int id, Product room)
         {
-            room = db.Product.Where(s => s.ID_Pro == id).FirstOrDefault();
-            db.Product.Remove(room);
+            room = db.Products.Where(s => s.ID_Pro == id).FirstOrDefault();
+            db.Products.Remove(room);
             db.SaveChanges();
             return RedirectToAction("Product_Control");
         }
         public ActionResult Product_Detail(int id)
         {
-            return View(db.Product.Where(s => s.ID_Pro == id).FirstOrDefault());
+            return View(db.Products.Where(s => s.ID_Pro == id).FirstOrDefault());
         }
         public ActionResult Product_Edit(int id)
         {
-            return View(db.Product.Where(s => s.ID_Pro == id).FirstOrDefault());
+            return View(db.Products.Where(s => s.ID_Pro == id).FirstOrDefault());
         }
         [HttpPost]
         public ActionResult Product_Edit(int id, Product room)
@@ -98,7 +98,7 @@ namespace Levent.Areas.Admin.Controllers
         }
         public ActionResult Product_Control()
         {
-            return View(db.Product.ToList());
+            return View(db.Products.ToList());
         }
     }
 }

@@ -19,6 +19,6 @@ namespace Levent.Models
         public string ColorPr_Name { get; set; }
         public string Img_Pro { get; set; }
     
-        public virtual Details Details { get; set; }
+        public virtual Detail Detail { get; set; }
     }
 }

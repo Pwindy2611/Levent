@@ -20,6 +20,6 @@ namespace Levent.Models
         public string Size_Name { get; set; }
     
         public virtual Category Category { get; set; }
-        public virtual Details Details { get; set; }
+        public virtual Detail Detail { get; set; }
     }
 }

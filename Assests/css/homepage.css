@@ -141,8 +141,8 @@ margin-bottom:5px;
 }
 
 .clo-4 {
-  max-width:350px;
-  margin:0 10px;
+    max-width: 350px;
+    /*margin:0 10px;*/
 }
 
 .img img {
@@ -373,8 +373,8 @@ margin-bottom:5px;
     }
 
 .con {
-    display: inline-flex;
-    margin-right: 30px;
+   margin-left: 25px;
+    margin-right: 25px;
 }
 
     .con p {
@@ -405,12 +405,14 @@ footer {
     font-size: 15px;
 }
 
-.category p {
-    margin-top: 5px;
-    line-height: 4.0;
-    font-size: 14px;
-    color: #515151;
-}
+
+
+    .category p {
+        margin-top: 5px;
+        line-height: 4.0;
+        font-size: 14px;
+        color: #515151;
+    }
 
 .support p {
     margin-top: 5px;
@@ -447,6 +449,7 @@ footer {
     .category a:hover {
         color: #000;
         font-weight: 500;
+        font-size: 17px;
     }
 
 .icon i {
@@ -478,7 +481,7 @@ footer {
     }
 
 .footer-con {
-    display:flex;
+   /*display:flex;*/
     width:25%;
 }
 
@@ -502,11 +505,12 @@ footer {
 }
 .footer-children {
     margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
+    display: inline-flex;
+    /*justify-content: space-between;*/
+    flex-wrap: wrap;
 }
 .con-main {
+    font-size: 16px;
 }
 .footer-con1
 {
@@ -665,14 +669,7 @@ menu-box-child:last-child {
 .menu-icon-bar:hover, .menu-icon-closed:hover {
     cursor: pointer;
 }
-.sec-80
-{
-    display:flex;
-    margin:0 50px;
-}
-.section-80 {
-    display: flex;
-}
+
 
 .sec-info {
     width: 100%;

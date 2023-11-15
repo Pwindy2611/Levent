@@ -216,7 +216,7 @@
           </Key>
           <Property Name="ID_Cate" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name_Cate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
           <NavigationProperty Name="Size_De" Relationship="Self.FK_Size_De_Category" FromRole="Category" ToRole="Size_De" />
         </EntityType>
         <EntityType Name="Color_De">
@@ -227,9 +227,9 @@
           <Property Name="ID_Details" Type="Int32" Nullable="false" />
           <Property Name="ColorPr_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Img_Pro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Details" Relationship="Self.FK_Color_De_Details" FromRole="Color_De" ToRole="Details" />
+          <NavigationProperty Name="Detail" Relationship="Self.FK_Color_De_Details" FromRole="Color_De" ToRole="Details" />
         </EntityType>
-        <EntityType Name="Details">
+        <EntityType Name="Detail">
           <Key>
             <PropertyRef Name="ID_Detail" />
           </Key>
@@ -241,7 +241,7 @@
           <Property Name="Quantity_Pro" Type="Int32" />
           <NavigationProperty Name="Color_De" Relationship="Self.FK_Color_De_Details" FromRole="Details" ToRole="Color_De" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Details_Product" FromRole="Details" ToRole="Product" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Details" FromRole="Details" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Details" FromRole="Details" ToRole="Order" />
           <NavigationProperty Name="Size_De" Relationship="Self.FK_Size_De_Details" FromRole="Details" ToRole="Size_De" />
         </EntityType>
         <EntityType Name="Order">
@@ -254,7 +254,7 @@
           <Property Name="TotalPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Status" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Details" Relationship="Self.FK_Order_Details" FromRole="Order" ToRole="Details" />
+          <NavigationProperty Name="Detail" Relationship="Self.FK_Order_Details" FromRole="Order" ToRole="Details" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -288,7 +288,7 @@
           <Property Name="ID_Details" Type="Int32" />
           <Property Name="Size_Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Size_De_Category" FromRole="Size_De" ToRole="Category" />
-          <NavigationProperty Name="Details" Relationship="Self.FK_Size_De_Details" FromRole="Size_De" ToRole="Details" />
+          <NavigationProperty Name="Detail" Relationship="Self.FK_Size_De_Details" FromRole="Size_De" ToRole="Details" />
         </EntityType>
         <Association Name="FK_Product_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -315,7 +315,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Color_De_Details">
-          <End Role="Details" Type="Self.Details" Multiplicity="1" />
+          <End Role="Details" Type="Self.Detail" Multiplicity="1" />
           <End Role="Color_De" Type="Self.Color_De" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Details">
@@ -328,7 +328,7 @@
         </Association>
         <Association Name="FK_Details_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Details" Type="Self.Details" Multiplicity="*" />
+          <End Role="Details" Type="Self.Detail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ID_Pro" />
@@ -339,7 +339,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Details">
-          <End Role="Details" Type="Self.Details" Multiplicity="1" />
+          <End Role="Details" Type="Self.Detail" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Details">
@@ -351,7 +351,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Size_De_Details">
-          <End Role="Details" Type="Self.Details" Multiplicity="0..1" />
+          <End Role="Details" Type="Self.Detail" Multiplicity="0..1" />
           <End Role="Size_De" Type="Self.Size_De" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Details">
@@ -362,21 +362,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Levent_1Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AdminUser" EntityType="Self.AdminUser" />
-          <EntitySet Name="Category" EntityType="Self.Category" />
+        <EntityContainer Name="Levent_1Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Color_De" EntityType="Self.Color_De" />
-          <EntitySet Name="Details" EntityType="Self.Details" />
-          <EntitySet Name="Order" EntityType="Self.Order" />
-          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Details" EntityType="Self.Detail" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="Size_De" EntityType="Self.Size_De" />
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Size_De_Category" Association="Self.FK_Size_De_Category">
-            <End Role="Category" EntitySet="Category" />
+            <End Role="Category" EntitySet="Categories" />
             <End Role="Size_De" EntitySet="Size_De" />
           </AssociationSet>
           <AssociationSet Name="FK_Color_De_Details" Association="Self.FK_Color_De_Details">
@@ -384,12 +384,12 @@
             <End Role="Color_De" EntitySet="Color_De" />
           </AssociationSet>
           <AssociationSet Name="FK_Details_Product" Association="Self.FK_Details_Product">
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Product" EntitySet="Products" />
             <End Role="Details" EntitySet="Details" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Details" Association="Self.FK_Order_Details">
             <End Role="Details" EntitySet="Details" />
-            <End Role="Order" EntitySet="Order" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_Size_De_Details" Association="Self.FK_Size_De_Details">
             <End Role="Details" EntitySet="Details" />
@@ -401,8 +401,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Levent_1ModelStoreContainer" CdmEntityContainer="Levent_1Entities">
-          <EntitySetMapping Name="AdminUser">
+        <EntityContainerMapping StorageEntityContainer="Levent_1ModelStoreContainer" CdmEntityContainer="Levent_1Entities2">
+          <EntitySetMapping Name="AdminUsers">
             <EntityTypeMapping TypeName="Levent_1Model.AdminUser">
               <MappingFragment StoreEntitySet="AdminUser">
                 <ScalarProperty Name="ID_User" ColumnName="ID_User" />
@@ -416,7 +416,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Category">
+          <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="Levent_1Model.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="ID_Cate" ColumnName="ID_Cate" />
@@ -435,7 +435,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Details">
-            <EntityTypeMapping TypeName="Levent_1Model.Details">
+            <EntityTypeMapping TypeName="Levent_1Model.Detail">
               <MappingFragment StoreEntitySet="Details">
                 <ScalarProperty Name="ID_Detail" ColumnName="ID_Detail" />
                 <ScalarProperty Name="ID_Pro" ColumnName="ID_Pro" />
@@ -446,7 +446,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Order">
+          <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="Levent_1Model.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -458,7 +458,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OrderDetail">
+          <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="Levent_1Model.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
                 <ScalarProperty Name="Order_Detail_Id" ColumnName="Order_Detail_Id" />
@@ -470,7 +470,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Product">
+          <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Levent_1Model.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="ID_Pro" ColumnName="ID_Pro" />
@@ -505,7 +505,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
