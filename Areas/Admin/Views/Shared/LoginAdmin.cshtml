@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Levent-AdminLogin</title>
+    <link href="~/Assests/css/homepage.css" rel="stylesheet" />
+
+    <link href="~/Assests/css/FormLogin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="shortcut icon" href="~/Assests/image/levent.png" />
+</head>
+<body>
+    <header class="hd hv-df">
+        <div class="header-banner">LEVENTS LOVE YOU</div>
+        <div class="header-top">
+                <div style="padding:30px 0">
+                    <a href="/Home/Index">
+                        <div style="text-align:center" class="hd-logo">
+                            <img src="https://levents.asia/wp-content/uploads/2021/10/logo.png" alt="">
+                        </div>
+                    </a>
+                </div>
+        </div>
+        <div>
+            @RenderBody()
+        </div>
+    </header>
+</body>
+</html>

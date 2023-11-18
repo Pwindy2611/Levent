@@ -4,69 +4,73 @@
     ViewBag.Title = "ShowCart";
     Layout = "~/Views/Shared/HomePage.cshtml";
 }
-<link href="~/Assests/css/thanhtoan.css" rel="stylesheet" />
-<div class="bc">
-    <div class="con">
-        <ul>
-            <li class="page">Trang chủ </li>
-            <li>/</li>
-            <li class="detail-page">Thanh toán</li>
-        </ul>
-    </div>
-    <div class="sec-80-check">
-        <section>
-            <div class="col-left">
-                <h4 class="sec-title">Thông tin giao hàng</h4>
-                <form>
-                    <div class="form-left">
-                        <div class="form-txt">
-                            <p>Bạn đã có tài khoản?<a href="">Đăng nhập</a></p>
+<style>
+    .formquantity {
+        max-width: 100px;
+        margin: auto;
+    }
+
+    .hover-update {
+        cursor: pointer;
+    }
+    .hover-delete:hover
+    {
+        background-color:darkgrey;
+        color:white;
+    }
+</style>
+<div style="margin:10px 20px">
+    <h2 style="text-align:center;font-size:2.5rem;margin:20px 0 100px 0">GIỎ HÀNG</h2>
+    <table style="width:100%" class="table">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Hình ảnh</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody style="text-align:center">
+            @foreach (var item in Model.Items)
+            {
+                decimal total = item._quantity * (decimal)item._product.Price_pro.Value;
+                <tr>
+                    <td>@Html.DisplayFor(model => item._product.Name_Pro)</td>
+                    <td><img src="@Url.Content(item._product.Image_Pro)" height="200" width="200" /></td>
+                    <td>@Html.DisplayFor(model => item._product.Price_pro) 000đ</td>
+                    <td>
+                        <div class="formquantity">
+                            @using (Html.BeginForm("Update_Cart_Quantity", "ShoppingCart"))
+                            {
+                                <input type="hidden" value="@item._product.ID_Pro" name="idPro" />
+                                <input type="number" value="@item._quantity" name="CartQuantity" />
+                                <input class="hover-update" style=" background-color: black; color: white; text-align: center; justify-content: center; align-items: center; line-height: 11px; border-radius: 8px;" type="submit" value="Update" />
+                            }
                         </div>
-                        <div class="col">
-                            <ul>
-                                <li><input type="text" placeholder="Họ và tên"></li>
-                                <li><input type="email" placeholder="Email"></li>
-                                <li><input type="number" placeholder="Số điện thoại"></li>
-                                <li><input type="date" placeholder="Ngày sinh"></li>
-                                <li><input type="text" placeholder="Địa chỉ"></li>
-                                <li><input type="text" placeholder="Tỉnh / Thành phố"></li>
-                                <li><input type="text" placeholder="Quận / Huyện"></li>
-                                <li><input type="text" placeholder="Phường / Xã"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
-                <div class="btn">
-                    <div class="left"><a href="">Tiếp tục mua sắm</a></div>
-                    <div class="right"> <a href="">Tiếp tục</a></div>
-                </div>
-            </div>
-            <div class="col-right">
-                <h4 class="sec-title">Giỏ hàng</h4>
-                <form>
-                    <div class="form-right">
-                        <div class="form-cart">
-                            <div class="cart-item">
-                                <div class="cart-img">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="name-info">
-                                    name
-                                </div>
-                                <div class="price-info">
-                                    <p>price</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="thanhtoan">
-                            <p>price</p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </section>
+
+                    </td>
+                    <td>@total 000đ</td>
+                    <td>
+                        <a class="hover-delete" style="color: black; text-decoration: none; font-weight: 700; padding: 8px 10px;border-radius:12px;" href="/ShoppingCart/RemoveCart/@item._product.ID_Pro">Xoá</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" style="text-align: right; font-size: 1.6rem; font-weight:700">
+                    Tổng tiền: @Model.Total_money() 000đ
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div style="text-align:center">
+        @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+        {
+            <input class="hover-update" style="width: auto; padding: 30px 40px; background-color: black; color: white; line-height: 1px; border-radius: 12px; font-size: 1.5rem; font-weight: 700;" type="submit" value="Thanh toán" class="btn btn-success" />
+        }
     </div>
 </div>
-
-<div class="clear"></div>
+}
 

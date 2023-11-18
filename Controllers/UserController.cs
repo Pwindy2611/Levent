@@ -10,7 +10,7 @@ namespace Levent.Controllers
     public class UserController : Controller
     {
         // GET: User
-        Levent_1Entities2 db = new Levent_1Entities2();
+        LeventEntities2 db = new LeventEntities2();
         //public ActionResult Index()
         //{
         //    return PartialView(db.User.ToList());
@@ -18,11 +18,11 @@ namespace Levent.Controllers
         public ActionResult RegisterUser(int id = 0)
         {
             id = 0;
-            AdminUser emp = new AdminUser();
-            var lastemployee = db.AdminUsers.OrderByDescending(x => x.ID_User).FirstOrDefault();
+            User1 emp = new User1();
+            var lastemployee = db.User1.OrderByDescending(x => x.ID_User).FirstOrDefault();
             if (id != 0)
             {
-                emp = db.AdminUsers.Where(x => x.ID_User == id).FirstOrDefault();
+                emp = db.User1.Where(x => x.ID_User == id).FirstOrDefault();
             }
             else if (lastemployee == null)
             {
@@ -36,23 +36,21 @@ namespace Levent.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RegisterUser(AdminUser user)
+        public ActionResult RegisterUser(User1 user)
         {
             var mail = user.Email_User;
             var pass = user.Password_User;
             if (ModelState.IsValid)
             {
-                var check = db.AdminUsers.Where(s => s.ID_User == user.ID_User).FirstOrDefault();
-                var check_mail = db.AdminUsers.Where(s => s.Email_User == user.Email_User).FirstOrDefault();
+                var check = db.User1.SingleOrDefault(s => s.ID_User == user.ID_User && s.Email_User.Equals(mail));
+                var check_mail = db.User1.Where(s => s.Email_User == user.Email_User).FirstOrDefault();
 
                 if (check == null)// chua co id{
                 {
                     if (check_mail == null)
                     {
-                        //user.Password_User = GetMD5(user.Password_User);
                         db.Configuration.ValidateOnSaveEnabled = false;
-                        //Session["ID"] = user.ID;
-                        db.AdminUsers.Add(user);
+                        db.User1.Add(user);
                         db.SaveChanges();
                         return RedirectToAction("LoginAccount", "User");
                     }
@@ -63,7 +61,7 @@ namespace Levent.Controllers
                     return RedirectToAction("RegisterUser", "User");
                 }
             }
-            return RedirectToAction("RegisterUser", "User");
+            return View(user);
 
 
         }
@@ -73,15 +71,15 @@ namespace Levent.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LoginAccount(AdminUser user)
+        public ActionResult LoginAccount(User1 user)
         {
-            var check = db.AdminUsers.Where(s => s.Email_User == user.Email_User && s.Password_User == user.Password_User).FirstOrDefault();
+            var check = db.User1.Where(s => s.Email_User == user.Email_User && s.Password_User == user.Password_User).FirstOrDefault();
             if (check == null)
             {
                 ViewBag.LoginFail = "Dang nhap that bai";
                 Session["User"] = null;
                 ModelState.AddModelError("myError", "InvalidEmail or Password");
-                return RedirectToAction("LoginAccount", "User");
+                return View(user);
 
             }
             else
@@ -102,14 +100,14 @@ namespace Levent.Controllers
         public ActionResult HomeUser(int id=0)
         {
             id = 0;
-               return View(db.AdminUsers.Where(x => x.ID_User == id).ToList());
+               return View(db.User1.Where(x => x.ID_User == id).ToList());
         }
         public ActionResult User_Edit(int id)
         {
-            return View(db.AdminUsers.Where(s => s.ID_User == id).FirstOrDefault());
+            return View(db.User1.Where(s => s.ID_User == id).FirstOrDefault());
         }
         [HttpPost]
-        public ActionResult User_Edit(int id, AdminUser user)
+        public ActionResult User_Edit(int id, User1 user)
         {
             try
             {
@@ -124,13 +122,13 @@ namespace Levent.Controllers
         }
         public ActionResult User_Delete(int id)
         {
-            return View(db.AdminUsers.Where(s => s.ID_User == id).FirstOrDefault());
+            return View(db.User1.Where(s => s.ID_User == id).FirstOrDefault());
         }
         [HttpPost]
-        public ActionResult User_Delete(int id, AdminUser user)
+        public ActionResult User_Delete(int id, User1 user)
         {
-            user = db.AdminUsers.Where(s => s.ID_User == id).FirstOrDefault();
-            db.AdminUsers.Remove(user);
+            user = db.User1.Where(s => s.ID_User == id).FirstOrDefault();
+            db.User1.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Logout", "User");
         }

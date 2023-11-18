@@ -36,11 +36,13 @@ html {
     }
 
 .filterJS {
-    display: inline-flex;
+    display: flex;
+    justify-content:space-between;
+    align-content:center;
 }
 
 .filter-btn {
-    margin-right: 1060px;
+    line-height:40px;
     color: #767676;
     font-size: 16px;
     font-weight: 100;
@@ -60,6 +62,7 @@ html {
     padding: 10px;
     padding-left: -5px;
     border: 1px solid #D9D9D9;
+    cursor:pointer;
 }
 
     .filter-select-a a {
@@ -136,3 +139,69 @@ html {
             background-color: #646161;
             color: #fff;
         }
+        .boloc
+        {
+            display:none;
+        }
+.box-search-main {
+    position: absolute;
+    right: 24px;
+    border: 1px solid #cfcfcf;
+    margin-top:5px;
+    border-radius:12px;
+    overflow:hidden;
+}
+.box-search {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding:0;
+    margin:0;
+    width:246px;
+}
+.box-search li
+{
+    padding:5px 20px;
+}
+    .box-search li:hover {
+        background-color: #cfcfcf;
+    }
+.box-search a {
+    text-decoration: none;
+    color: black;
+    font-weight: 300;
+}
+.overplay-1
+{
+}
+.MenuPage
+{
+    margin:20px 0;
+}
+.MenuPage ul {
+    margin: auto;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    max-width: 100px;
+    padding: 0;
+}
+    .MenuPage li
+    {
+        margin:0 5px;
+    }
+    .MenuPage a {
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: #cfcfcf;
+    }
+    .MenuPage a:hover
+
+    {
+        background-color:black;
+        color:white;
+    }

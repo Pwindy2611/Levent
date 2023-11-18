@@ -12,13 +12,11 @@ namespace Levent.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Color_De
+    public partial class Admin1
     {
-        public int IdColor { get; set; }
-        public int ID_Details { get; set; }
-        public string ColorPr_Name { get; set; }
-        public string Img_Pro { get; set; }
-    
-        public virtual Detail Detail { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
     }
 }

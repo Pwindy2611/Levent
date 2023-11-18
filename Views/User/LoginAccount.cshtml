@@ -1,9 +1,15 @@
-﻿@model Levent.Models.AdminUser
+﻿@model Levent.Models.User1
 
 @{
     ViewBag.Title = "LoginAccount";
     Layout = "~/Views/Shared/HomePage.cshtml";
 }
+<style>
+    .field-validation-error {
+        color: red;
+        font-size: 0.7rem;
+    }
+</style>
 @using (Html.BeginForm("LoginAccount", "User"))
 {
     @Html.AntiForgeryToken()
@@ -17,10 +23,12 @@
                         <div class="form-text">
                             <div class="text-top">Bạn chưa có tài khoản? <a href="/User/RegisterUser">Đăng ký</a></div>
                         </div>
-                        <input name="Email_User" type="text" placeholder="Email hoặc Số điện thoại"><br>
-                        <input name="Password_User" type="password" placeholder="Mật khẩu">
+                        <input class="input-login" name="Email_User" type="text" placeholder="Email hoặc Số điện thoại"><br>
+                        <p style="margin:0">@Html.ValidationMessageFor(model => model.Email_User)</p>
+                        <input class="input-login" name="Password_User" type="password" placeholder="Mật khẩu">
+                        <p style="margin:0">@Html.ValidationMessageFor(model => model.Password_User)</p>
                         <div class="form-check">
-                            <div class="check">
+                            <div style="margin-top:20px" class="check">
                                 <input type="checkbox">
                                 <div class="text-bottom">Ghi nhớ tài khoản</div>
                             </div>

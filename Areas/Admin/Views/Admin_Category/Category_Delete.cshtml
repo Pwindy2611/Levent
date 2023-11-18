@@ -1,0 +1,44 @@
+﻿@model Levent.Models.Category
+@{
+    ViewBag.Title = "Category_Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Category_Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Recent Tickets</h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th> Name </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>  @Html.DisplayFor(model => model.Name_Cate) </td>
+                                <td>  @Html.DisplayFor(model => model.ID_Cate, new { @id = "exampleInputEmail3" })</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-gradient-primary me-2" />
+                            @Html.ActionLink("Cancel", "Category_Control", "Admin_Category", new { @class = "btn btn-light" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </dl>
+</div>

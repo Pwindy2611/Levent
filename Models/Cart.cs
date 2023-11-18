@@ -36,6 +36,11 @@ namespace Levent.Models
         {
             return items.Sum(s => s._quantity);
         }
+        public decimal Total_money()
+        {
+            var total = items.Sum(s => s._quantity * s._product.Price_pro);
+            return (decimal)total;
+        }
         public void Update_quantity(int id, int _new_quan)
         {
             var item = items.Find(s => s._product.ID_Pro == id);
@@ -50,6 +55,5 @@ namespace Levent.Models
         {
             items.Clear();
         }
-     
-   
+    }
 }

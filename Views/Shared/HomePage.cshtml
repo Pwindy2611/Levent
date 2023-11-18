@@ -9,6 +9,12 @@
     <link href="~/Assests/css/FormLogin.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="shortcut icon" href="~/Assests/image/levent.png" />
+    <style>
+        .cart_icon:hover
+        {
+            cursor:pointer;
+        }
+    </style>
 </head>
 <body>
     <header class="hd hv-df">
@@ -20,7 +26,7 @@
                     <span class="menu-icon-closed"><i style="font-size:1.2rem" class="Menu-closed fa-solid fa-xmark"></i></span>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/Home/Index">
                         <div style="text-align:center" class="hd-logo">
                             <img src="https://levents.asia/wp-content/uploads/2021/10/logo.png" alt="">
                         </div>
@@ -36,15 +42,32 @@
 
                             </li>
                             <li class="header-bot"><img src="https://levents.asia/template/assets/images/svg/ic-ser.svg" alt=""></li>
-                            <li><img src="https://levents.asia/template/assets/images/svg/ic-cart.svg" alt=""></li>
-                            @{var user = Session["User"] as Levent.Models.AdminUser;}
+                            @*<li class="cart_icon">
+                                <a href="/ShoppingCart/ShowCart">
+                                    <img src="https://levents.asia/template/assets/images/svg/ic-cart.svg" alt="">
+                                    @Html.Action("BagCart", "ShoppingCart")
+                                </a>
+                            </li>*@
+                            @{var user = Session["User"] as Levent.Models.User1;}
                             @{if (user == null)
                                 {
                                     <li><a href="/User/LoginAccount"><img src="https://levents.asia/template/assets/images/svg/ic-user.svg" alt=""></a></li>
+                                    <li class="cart_icon">
+                                        <a href="/User/LoginAccount">
+                                            <img src="https://levents.asia/template/assets/images/svg/ic-cart.svg" alt="">
+                                            @Html.Action("BagCart", "ShoppingCart")
+                                        </a>
+                                    </li>
                                 }
                                 else
                                 {
-                                    <li><a href="/User/HomeUser"><img src="https://levents.asia/template/assets/images/svg/ic-user.svg" alt=""></a></li>
+                                    <li><a href="/User/HomeUser"><img style="padding: 0px; background-color: black; border-radius: 50%;" src="https://levents.asia/template/assets/images/svg/ic-user.svg" alt=""></a></li>
+                                    <li class="cart_icon">
+                                        <a href="/ShoppingCart/ShowCart">
+                                            <img src="https://levents.asia/template/assets/images/svg/ic-cart.svg" alt="">
+                                            @Html.Action("BagCart", "ShoppingCart")
+                                        </a>
+                                    </li>
                                 }
                             }
 
@@ -54,19 +77,7 @@
                 </li>
             </ul>
         </div>
-        <div class="header-bot">
-            <ul>
-                <li><a href="https://levents.asia/about-us/">About Us</a></li>
-                <li>@Html.ActionLink("Cửa hàng", "Index", "Shop")</li>
-                <li><a href="https://levents.asia/sale/">Giảm giá</a></li>
-                <li><a href="https://levents.asia/special-collection/">Bộ sưu tập</a></li>
-                <li><a href="https://levents.asia/styling/">Bộ phối</a></li>
-                <li><a href="https://levents.asia/blog/">Bài viết <i class="ti-angle-down"></i></a></li>
-                <li><a href="https://levents.asia/contact/">Liên hệ</a></li>
-                <li><a href="https://levents.asia/customer-care/">Chăm sóc khách hàng <i class="ti-angle-down"></i></a></li>
-                <li><a href="https://levents.asia/recruitment/">Tuyển dụng</a></li>
-            </ul>
-        </div>
+      @Html.Partial("Menu")
     </header>
     @RenderBody()
     <hr>
@@ -167,53 +178,5 @@
             </ul>
         </div>
     </footer>
-    <div class="Main-menu-box">
-        <div class="overplay"></div>
-        <div class="menu-box">
-            <div class="menu-box-listmain">
-                <div class="menu-box__child">
-                    <ul class="menu-box__list">
-                        <li class="menu-box-item"><a href="https://levents.asia/about-us/">About Us</a></li>
-                        <li class="menu-box-item"><a href="/home/Index">Cửa hàng</a></li>
-                        <li class="menu-box-item"><a href="https://levents.asia/sale/">Giảm giá</a></li>
-                        <li class="menu-box-item"><a href="https://levents.asia/special-collection/">Bộ sưu tập</a></li>
-                        <li class="menu-box-item"><a href="https://levents.asia/styling/">Bộ phối</a></li>
-                        <li class="menu-box-item"><a href="https://levents.asia/blog/">Bài viết </a></li>
-                        <li class="menu-box-item"><a href="https://levents.asia/contact/">Liên hệ</a></li>
-                        <li class="menu-box-item"><a href="https://levents.asia/customer-care/">Chăm sóc khách hàng <i class="ti-angle-down"></i></a></li>
-                        <li class="menu-box-item"><a href="https://levents.asia/recruitment/">Tuyển dụng</a></li>
-                    </ul>
-                </div>
-                <div class="menu-box-child">
-                    <ul class="menu-box__list">
-                        <li class="menu-box-item">Sản phẩm yêu thích</li>
-                        <li class="menu-box-item">Account</li>
-                        <li class="menu-box-item"><span>Language:</span><img src="https://levents.asia/template/assets/images/svg/ic-vn.svg" alt=""></li>
-                    </ul>
-                </div>
-            </div>
-           
-        </div>
-    </div>
-    <script>
-        const closed = document.querySelector('.menu-icon-closed')
-        const bar = document.querySelector('.menu-icon-bar')
-        const menu_box = document.querySelector('.Main-menu-box')
-        const overplay = document.querySelector('.overplay')
-        // them class open tren
-        function showmodal() {
-            menu_box.classList.add('open')
-            bar.classList.add('closed')
-            closed.classList.add('open')
-        }
-        function closedmodal() {
-            menu_box.classList.remove('open')
-            bar.classList.remove('closed')
-            closed.classList.remove('open')
-        }
-        bar.addEventListener('click', showmodal)
-        overplay.addEventListener('click', closedmodal)
-        closed.addEventListener('click', closedmodal)
-    </script>
 </body>
 </html>

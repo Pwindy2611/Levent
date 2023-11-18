@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Levent.Models.Category>
+@{
+    ViewBag.Title = "Category_Control";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<h2 style="text-align:center">LIST CATEGORIES</h2>
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead class="table-info">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID_Cate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name_Cate)
+                        </td>
+                        <td>
+                            <a href="Category_Edit/@item.ID_Cate" class="text-link-action">Sửa</a>
+                            <span style="padding:0 8px">|</span>
+                            <a href="Category_Delete/@item.ID_Cate" class="text-link-action">Xóa</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

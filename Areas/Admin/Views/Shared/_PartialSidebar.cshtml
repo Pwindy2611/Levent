@@ -20,6 +20,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="~/Admin/Admin_Category/Category_Control">
+                <span class="menu-title">CATEGORIES</span>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="~/Admin/Admin_Product/Product_Control">
                 <span class="menu-title">PRODUCT</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
@@ -30,6 +36,14 @@
                 <span class="menu-title">USERS</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
             </a>
+        </li>
+        <li class="nav-item sidebar-actions">
+            <div class="nav-link">
+                <div class="border-bottom">
+                    <h6 class="font-weight-normal mb-3">CATEGORRIES</h6>
+                </div>
+                <button class="btn btn-block btn-lg btn-gradient-primary mt-4"> @Html.ActionLink("+ Add a project", "Category_Create", "Admin_Category", null, new { @class = "text-btn-admin" })</button>
+            </div>
         </li>
         <li class="nav-item sidebar-actions">
             <div class="nav-link">

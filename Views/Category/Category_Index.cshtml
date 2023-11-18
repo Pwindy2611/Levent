@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Levent.Models.Category>
+<div class="header-bot">
+    <ul>
+        <li><a href="https://levents.asia/about-us/">About Us</a></li>
+        <li>@Html.ActionLink("Cửa hàng", "Product_Index_Store", "Product")</li>
+        @foreach (var menu in Model)
+        {
+            <li><a href="/Product/Product_Index_ByCate?cateid=@menu.ID_Cate">@Html.DisplayFor(x => menu.Name_Cate)</a></li>
+        }
+        <li><a href="https://levents.asia/special-collection/">Bộ sưu tập</a></li>
+        <li><a href="https://levents.asia/styling/">Bộ phối</a></li>
+        <li><a href="https://levents.asia/blog/">Bài viết <i class="ti-angle-down"></i></a></li>
+        <li><a href="https://levents.asia/contact/">Liên hệ</a></li>
+        <li><a href="https://levents.asia/customer-care/">Chăm sóc khách hàng <i class="ti-angle-down"></i></a></li>
+        <li><a href="https://levents.asia/recruitment/">Tuyển dụng</a></li>
+    </ul>
+</div>
+
+
+<div class="Main-menu-box">
+    <div class="overplay"></div>
+    <div class="menu-box">
+        <div class="menu-box-listmain">
+            <div class="menu-box__child">
+                <ul class="menu-box__list">
+                    <li class="menu-box-item"><a href="https://levents.asia/about-us/">About Us</a></li>
+                    <li class="menu-box-item"><a href="/Product/Product_Index_Store">Cửa hàng</a></li>
+                    @foreach (var menu in Model)
+                    {
+                        <li class="menu-box-item"><a href="/Product/Product_Index_ByCate?cateid=@menu.ID_Cate">@Html.DisplayFor(x => menu.Name_Cate)</a></li>
+                    }
+                    <li class="menu-box-item"><a href="https://levents.asia/sale/">Giảm giá</a></li>
+                    <li class="menu-box-item"><a href="https://levents.asia/special-collection/">Bộ sưu tập</a></li>
+                    <li class="menu-box-item"><a href="https://levents.asia/styling/">Bộ phối</a></li>
+                    <li class="menu-box-item"><a href="https://levents.asia/blog/">Bài viết </a></li>
+                    <li class="menu-box-item"><a href="https://levents.asia/contact/">Liên hệ</a></li>
+                    <li class="menu-box-item"><a href="https://levents.asia/customer-care/">Chăm sóc khách hàng <i class="ti-angle-down"></i></a></li>
+                    <li class="menu-box-item"><a href="https://levents.asia/recruitment/">Tuyển dụng</a></li>
+                </ul>
+            </div>
+            <div class="menu-box-child">
+                <ul class="menu-box__list">
+                    <li class="menu-box-item">Sản phẩm yêu thích</li>
+                    <li class="menu-box-item">Account</li>
+                    <li class="menu-box-item"><span>Language:</span><img src="https://levents.asia/template/assets/images/svg/ic-vn.svg" alt=""></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+        const closed = document.querySelector('.menu-icon-closed')
+        const bar = document.querySelector('.menu-icon-bar')
+        const menu_box = document.querySelector('.Main-menu-box')
+        const overplay = document.querySelector('.overplay')
+        // them class open tren
+        function showmodal() {
+            menu_box.classList.add('open')
+            bar.classList.add('closed')
+            closed.classList.add('open')
+        }
+        function closedmodal() {
+            menu_box.classList.remove('open')
+            bar.classList.remove('closed')
+            closed.classList.remove('open')
+        }
+        bar.addEventListener('click', showmodal)
+        overplay.addEventListener('click', closedmodal)
+        closed.addEventListener('click', closedmodal)
+</script>

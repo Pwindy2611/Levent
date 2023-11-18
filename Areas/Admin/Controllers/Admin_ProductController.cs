@@ -11,15 +11,22 @@ namespace Levent.Areas.Admin.Controllers
 {
     public class Admin_ProductController : Controller
     {
-        Levent_1Entities2 db = new Levent_1Entities2();
+        LeventEntities2 db = new LeventEntities2();
         // GET: Admin/Admin_Product
+        public ActionResult SelectCate()
+        {
+            Category catels = new Category();
+            catels.ListCate = db.Category.ToList<Category>();
+            return PartialView(catels);
+
+        }
         public ActionResult Product_Create(int id = 0)
         {
             Product emp = new Product();
-            var lastemployee = db.Products.OrderByDescending(x => x.ID_Pro).FirstOrDefault();
+            var lastemployee = db.Product.OrderByDescending(x => x.ID_Pro).FirstOrDefault();
             if (id != 0)
             {
-                emp = db.Products.Where(x => x.ID_Pro == id).FirstOrDefault();
+                emp = db.Product.Where(x => x.ID_Pro == id).FirstOrDefault();
             }
             else if (lastemployee == null)
             {
@@ -41,10 +48,15 @@ namespace Levent.Areas.Admin.Controllers
                     string filename = Path.GetFileNameWithoutExtension(pro.UploadImage.FileName);
                     string extent = Path.GetExtension(pro.UploadImage.FileName);
                     filename += extent;
-                    pro.Img_pro = "~/Content/image/" + filename;
+                    pro.Image_Pro = "~/Content/image/" + filename;
                     pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
                 }
-                db.Products.Add(pro);
+                List<Category> catels = db.Category.ToList();
+                foreach (var item in catels)
+                {
+                    pro.Name_Cate = db.Category.Where(x => x.ID_Cate == pro.ID_Cate).Select(x => x.Name_Cate).FirstOrDefault();
+                }
+                db.Product.Add(pro);
                 db.SaveChanges();
                 return RedirectToAction("Product_Control", pro);
             }
@@ -55,23 +67,23 @@ namespace Levent.Areas.Admin.Controllers
         }
         public ActionResult Product_Delete(int id)
         {
-            return View(db.Products.Where(s => s.ID_Pro == id).FirstOrDefault());
+            return View(db.Product.Where(s => s.ID_Pro == id).FirstOrDefault());
         }
         [HttpPost]
         public ActionResult Product_Delete(int id, Product room)
         {
-            room = db.Products.Where(s => s.ID_Pro == id).FirstOrDefault();
-            db.Products.Remove(room);
+            room = db.Product.Where(s => s.ID_Pro == id).FirstOrDefault();
+            db.Product.Remove(room);
             db.SaveChanges();
             return RedirectToAction("Product_Control");
         }
         public ActionResult Product_Detail(int id)
         {
-            return View(db.Products.Where(s => s.ID_Pro == id).FirstOrDefault());
+            return View(db.Product.Where(s => s.ID_Pro == id).FirstOrDefault());
         }
         public ActionResult Product_Edit(int id)
         {
-            return View(db.Products.Where(s => s.ID_Pro == id).FirstOrDefault());
+            return View(db.Product.Where(s => s.ID_Pro == id).FirstOrDefault());
         }
         [HttpPost]
         public ActionResult Product_Edit(int id, Product room)
@@ -83,8 +95,13 @@ namespace Levent.Areas.Admin.Controllers
                     string filename = Path.GetFileNameWithoutExtension(room.UploadImage.FileName);
                     string extent = Path.GetExtension(room.UploadImage.FileName);
                     filename += extent;
-                    room.Img_pro = "~/Content/image/" + filename;
+                    room.Image_Pro = "~/Content/image/" + filename;
                     room.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
+                }
+                List<Category> catels = db.Category.ToList();
+                foreach (var item in catels)
+                {
+                    room.Name_Cate = db.Category.Where(x => x.ID_Cate == room.ID_Cate).Select(x => x.Name_Cate).FirstOrDefault();
                 }
                 db.Entry(room).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
@@ -98,7 +115,7 @@ namespace Levent.Areas.Admin.Controllers
         }
         public ActionResult Product_Control()
         {
-            return View(db.Products.ToList());
+            return View(db.Product.ToList());
         }
     }
 }

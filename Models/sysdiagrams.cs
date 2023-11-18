@@ -12,15 +12,12 @@ namespace Levent.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class AdminUser
+    public partial class sysdiagrams
     {
-        public int ID_User { get; set; }
-        public string User_Name { get; set; }
-        public string Full_Name { get; set; }
-        public string Email_User { get; set; }
-        public string Phone_Number { get; set; }
-        public string Address { get; set; }
-        public string Password_User { get; set; }
-        public Nullable<int> Role { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

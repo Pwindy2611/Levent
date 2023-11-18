@@ -1,7 +1,13 @@
-﻿@model Levent.Models.AdminUser
+﻿@model Levent.Models.User1
 @{
     Layout = "~/Views/Shared/HomePage.cshtml";
 }
+<style>
+    .field-validation-error {
+        color: red;
+        font-size: 0.7rem;
+    }
+</style>
 @using (Html.BeginForm("RegisterUser", "User", FormMethod.Post, new { enctype = "multipartform/data" }))
 {
     @Html.AntiForgeryToken()
@@ -15,14 +21,24 @@
                         <div style="display:none" class="vadition__box-wrapper">
                             <p class="vadition__box-tittle--input">@Html.LabelFor(model => model.ID_User) </p>
                             @Html.EditorFor(model => model.ID_User, new { htmlAttributes = new { placeholder = "Nhap ID_User", @readonly = "readonly" } })
-                            <p>@Html.ValidationMessageFor(model => model.ID_User)</p>
+                            <p style="margin:0">@Html.ValidationMessageFor(model => model.ID_User)</p>
                         </div>
-                        <input type="text" name="User_Name" placeholder="NickName">
-                        <input type="Email" name="Email_User" placeholder="Email">
-                        <input type="number" name="Phone_Number" placeholder="Số điện thoại">
-                        <input type="password" name="Password_User" placeholder="Mật khẩu">
-                        <input type="password" name="ConfirmPassword" placeholder="Xác nhận lại mật khẩu">
-                        <div class="form-check">
+                        @*<input type="text" name="User_Name" placeholder="Ho và tên">*@
+                        @Html.EditorFor(model => model.Name_User, new { htmlAttributes = new { @class = "input-login", placeholder = "Họ và tên", } })
+                        <p style="margin:0">@Html.ValidationMessageFor(model => model.Name_User)</p>
+                        @*<input type="Email" name="Email_User" placeholder="Email">*@
+                        @Html.EditorFor(model => model.Email_User, new { htmlAttributes = new { @class = "input-login", placeholder = "Email", } })
+                        <p style="margin:0">@Html.ValidationMessageFor(model => model.Email_User)</p>
+                        @*<input type="number" name="Phone_User" placeholder="Số điện thoại">*@
+                        @Html.EditorFor(model => model.Phone_User, new { htmlAttributes = new { @class = "input-login", placeholder = "Số điện thoại", } })
+                        <p style="margin:0">@Html.ValidationMessageFor(model => model.Phone_User)</p>
+                        @*<input type="password" name="Password_User" placeholder="Mật khẩu">*@
+                        @Html.EditorFor(model => model.Password_User, new { htmlAttributes = new { @class = "input-login", placeholder = "Mật khẩu", } })
+                        <p style="margin:0">@Html.ValidationMessageFor(model => model.Password_User)</p>
+                        @*<input type="password" name="ConfirmPassword" placeholder="Xác nhận lại mật khẩu">*@
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "input-login", placeholder = "Xác nhận lại mật khẩu", } })
+                        <p style="margin:0">@Html.ValidationMessageFor(model => model.ConfirmPassword)</p>
+                        <div style="margin-top:10px" class="form-check">
                             <div class="check">
                                 <input type="checkbox">
                                 <div class="text-bottom">

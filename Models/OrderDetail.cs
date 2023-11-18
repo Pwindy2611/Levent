@@ -14,11 +14,14 @@ namespace Levent.Models
     
     public partial class OrderDetail
     {
-        public int Order_Detail_Id { get; set; }
-        public Nullable<int> OrderId { get; set; }
-        public Nullable<int> ProductId { get; set; }
-        public Nullable<int> DetailId { get; set; }
+        public int ID_OderDetail { get; set; }
+        public Nullable<int> ID_Order { get; set; }
+        public Nullable<int> ID_User { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<decimal> Price { get; set; }
+        public Nullable<double> UnitPrice { get; set; }
+        public Nullable<int> ID_Product { get; set; }
+    
+        public virtual OrderPro OrderPro { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

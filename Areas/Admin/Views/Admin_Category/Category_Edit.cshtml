@@ -1,0 +1,36 @@
+﻿@model Levent.Models.Category
+@{
+    ViewBag.Title = "Category_Edit";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h2>Category_Edit</h2>
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Category_Edit", "Admin_Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Category</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card-body">
+            <form class="forms-sample">
+                <div class="form-group">
+                    <label style="display:block" for="exampleInputName1">ID</label>
+                    @Html.EditorFor(model => model.ID_Cate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ID_Cate, "", new { @id = "exampleInputEmail3" })
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3">Name</label>
+                    @Html.EditorFor(model => model.Name_Cate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name_Cate, "", new { @id = "exampleInputEmail3" })
+                </div>
+                <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                @*<button type "submit"class="btn btn-light">Cancel</button>*@
+                @Html.ActionLink("Cancel", "Category_Control", "Admin_Category", new { @class = "btn btn-light" })
+            </form>
+        </div>
+    </div>
+}
+

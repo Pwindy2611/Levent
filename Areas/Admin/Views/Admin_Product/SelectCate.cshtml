@@ -1,0 +1,3 @@
+﻿@model Levent.Models.Category
+@Html.DropDownListFor(model => model.ID_Cate,
+    new SelectList(Model.ListCate.OrderBy(mbox => mbox.Name_Cate), "ID_Cate", "Name_Cate"), "--Select Cate--")

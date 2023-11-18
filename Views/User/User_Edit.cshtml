@@ -1,4 +1,4 @@
-﻿@model Levent.Models.AdminUser
+﻿@model Levent.Models.User1
 
 @{
     ViewBag.Title = "User_Edit";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-<main>
+<main style="margin:0 20px;">
     <section class="sec-80">
         <div class="sec-info">
             <div class="info-right">
@@ -26,14 +26,11 @@
                                         <p>@Html.ValidationMessageFor(model => model.ID_User)</p>
                                     </div>
                                     <label>Họ và tên:</label>
-                                    @*<input type="text" name="Full_Name" placeholder="@Model.Full_Name">*@
-                                    @Html.EditorFor(model => model.Full_Name, new { htmlAttributes = new { @class = "input-edit" } })
-                                    <label>Nickname:</label>
                                     @*<input type="text" name="User_Name" placeholder="@Model.User_Name">*@
-                                     @Html.EditorFor(model => model.User_Name, new { htmlAttributes = new { @class = "input-edit" } })
+                                     @Html.EditorFor(model => model.Name_User, new { htmlAttributes = new { @class = "input-edit" } })
                                     <label>Phone Number:</label>
                                     @*<input type="number" name="Phone_Number" placeholder="@Model.Phone_Number">*@
-                                    @Html.EditorFor(model => model.Phone_Number, new { htmlAttributes = new { @class = "input-edit" } })
+                                    @Html.EditorFor(model => model.Phone_User, new { htmlAttributes = new { @class = "input-edit" } })
                                     <label>Address:</label>
                                     @*<input type="text" name="Address" placeholder="@Model.Address">*@
                                   @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "input-edit" } })

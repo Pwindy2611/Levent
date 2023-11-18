@@ -17,16 +17,13 @@ namespace Levent.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
-            this.Products = new HashSet<Product>();
-            this.Size_De = new HashSet<Size_De>();
+            this.Product = new HashSet<Product>();
         }
-    
+        public List<Category> ListCate { get; internal set; }
         public int ID_Cate { get; set; }
         public string Name_Cate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Size_De> Size_De { get; set; }
+        public virtual ICollection<Product> Product { get; set; }
     }
 }

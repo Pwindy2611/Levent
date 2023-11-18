@@ -13,10 +13,10 @@ namespace Levent.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Levent_1Entities2 : DbContext
+    public partial class LeventEntities2 : DbContext
     {
-        public Levent_1Entities2()
-            : base("name=Levent_1Entities2")
+        public LeventEntities2()
+            : base("name=LeventEntities2")
         {
         }
     
@@ -25,13 +25,12 @@ namespace Levent.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AdminUser> AdminUsers { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Color_De> Color_De { get; set; }
-        public virtual DbSet<Detail> Details { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Size_De> Size_De { get; set; }
+        public virtual DbSet<Admin1> Admin1 { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
+        public virtual DbSet<OrderPro> OrderPro { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<User1> User1 { get; set; }
     }
 }

@@ -1,24 +1,24 @@
-﻿@model  IEnumerable<Levent.Models.AdminUser>
+﻿@model  IEnumerable<Levent.Models.User1>
 @{
     ViewBag.Title = "HomeUser";
     Layout = "~/Views/Shared/HomePage.cshtml";
 }
-@{var user = Session["User"] as Levent.Models.AdminUser;}
+@{var user = Session["User"] as Levent.Models.User1;}
 <main>
     <section class="sec-80">
         <div class="sec-info">
             <div class="info-left">
 
-                <div class="siba-name">@user.User_Name</div>
+                <div class="siba-name">@user.Name_User</div>
                 <div class="siba-mail">@user.Email_User</div>
                 <hr>
                 <div class="account-img"><img src="~/Assests/image/meo.png" /></div>
                 <div class="siba-out"><a href="/User/Logout">Đăng xuất</a></div>
-                <div style="margin-top:50px;" class="siba-out"><a href="~/Admin/HomeAdmin/Index">Admin</a></div>
+                <div style="margin-top:50px;" class="siba-out"><a href="~/Admin/HomeAdmin/LoginAdmin">Admin</a></div>
 
             </div>
 
-            <div class="info-right">
+            <div style="margin:0 20px;" class="info-right">
                 <div class="mem">
                     <div class="wish-head">
                         <div class="title">Thông tin cá nhân</div>
@@ -27,8 +27,8 @@
                             <form>
                                 <div class="form">
                                     <label>ID:</label><span>@user.ID_User</span><br>
-                                    <label>Họ và tên:</label><span>@user.Full_Name</span><br>
-                                    <label>Phone Number:</label><span>@user.Phone_Number</span><br>
+                                    <label>Họ và tên:</label><span>@user.Name_User</span><br>
+                                    <label>Phone Number:</label><span>@user.Phone_User</span><br>
                                     <label>Address:</label><span>@user.Address</span><br>
                                     <label>Password:</label><span>@user.Password_User</span><br>
                                 </div>

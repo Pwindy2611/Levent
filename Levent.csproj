@@ -53,6 +53,12 @@
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -130,9 +136,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\Admin_CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\Admin_ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\Admin_UsersController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -141,45 +149,42 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AdminUser.cs">
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
+    <Compile Include="Models\Admin1.cs">
+      <DependentUpon>Levent.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs">
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
+      <DependentUpon>Levent.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Color_De.cs">
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Detail.cs">
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Levent_1Entities.Context.cs">
+    <Compile Include="Models\Levent.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Levent_1Entities.Context.tt</DependentUpon>
+      <DependentUpon>Levent.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Levent_1Entities.cs">
+    <Compile Include="Models\Levent.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
+      <DependentUpon>Levent.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Levent_1Entities.Designer.cs">
+    <Compile Include="Models\Levent.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Levent_1Entities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Order.cs">
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
+      <DependentUpon>Levent.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetail.cs">
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
+      <DependentUpon>Levent.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderPro.cs">
+      <DependentUpon>Levent.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product.cs">
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
+      <DependentUpon>Levent.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Size_De.cs">
-      <DependentUpon>Levent_1Entities.tt</DependentUpon>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Levent.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User1.cs">
+      <DependentUpon>Levent.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -188,6 +193,7 @@
     <Content Include="Assests\css\FormLogin.css" />
     <Content Include="Assests\css\homepage.css" />
     <Content Include="Assests\css\shop.css" />
+    <Content Include="Assests\css\Success.css" />
     <Content Include="Assests\css\thanhtoan.css" />
     <Content Include="Assests\image\bang-size.png" />
     <Content Include="Assests\image\levent.png" />
@@ -197,19 +203,20 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Levent_1Entities.Context.tt">
+    <Content Include="Models\Levent.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Levent_1Entities.edmx</DependentUpon>
-      <LastGenOutput>Levent_1Entities.Context.cs</LastGenOutput>
+      <DependentUpon>Levent.edmx</DependentUpon>
+      <LastGenOutput>Levent.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Levent_1Entities.tt">
+    <Content Include="Models\Levent.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Levent_1Entities.edmx</DependentUpon>
-      <LastGenOutput>Levent_1Entities.cs</LastGenOutput>
+      <DependentUpon>Levent.edmx</DependentUpon>
+      <LastGenOutput>Levent.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="_LayoutAdmin\.gitignore" />
@@ -380,12 +387,19 @@
     <Content Include="Areas\Admin\Views\Admin_Product\Product_Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Admin_Product\Product_Detail.cshtml" />
     <Content Include="Areas\Admin\Views\Admin_Product\Product_Edit.cshtml" />
-    <EntityDeploy Include="Models\Levent_1Entities.edmx">
+    <Content Include="Areas\Admin\Views\Admin_Product\SelectCate.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin_Category\Category_Control.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin_Category\Category_Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin_Category\Category_Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin_Category\Category_Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\LoginAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeAdmin\LoginAdmin.cshtml" />
+    <EntityDeploy Include="Models\Levent.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Levent_1Entities.Designer.cs</LastGenOutput>
+      <LastGenOutput>Levent.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Levent_1Entities.edmx.diagram">
-      <DependentUpon>Levent_1Entities.edmx</DependentUpon>
+    <Content Include="Models\Levent.edmx.diagram">
+      <DependentUpon>Levent.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -422,6 +436,16 @@
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Product\Products_Detail.cshtml" />
     <Content Include="Views\ShoppingCart\ShowCart.cshtml" />
+    <Content Include="Views\Product\Product_Index_Store.cshtml" />
+    <Content Include="Views\Product\Product_Index_ByCate.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\Category\Category_Index.cshtml" />
+    <Content Include="Views\ShoppingCart\BagCart.cshtml" />
+    <Content Include="Views\ShoppingCart\EmptyCart.cshtml" />
+    <Content Include="Views\ShoppingCart\CheckOut_Success.cshtml" />
+    <Content Include="Views\Product\SearchOption.cshtml" />
+    <Content Include="Views\Product\MintoMax.cshtml" />
+    <Content Include="Views\Product\MaxtoMin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

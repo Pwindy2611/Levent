@@ -1,7 +1,5 @@
 ﻿@model Levent.Models.Product
 
-
-
 @{
     ViewBag.Title = "Products_Detail";
     Layout = "~/Views/Shared/HomePage.cshtml";
@@ -12,16 +10,16 @@
         <ul>
             <li class="page">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
             <li>/</li>
-            <li class="page">@Html.ActionLink("Cửa hàng", "Index", "Shop")</li>
+            <li class="page">@Html.ActionLink("Cửa hàng", "Product_Index_Store", "Product")</li>
             <li>/</li>
-            <li class="detail-page">Levents® Classic Regular Tee</li>
+            <li class="detail-page">Levents®  @Html.DisplayFor(model => model.Name_Pro, new { @class = "mb-5" })</li>
         </ul>
     </div>
 </div>
 <div class="sec-80-shop">
     <div class="con-pro">
         <div class="col-left">
-            <a href=""><img src="@Url.Content(Model.Img_pro)" alt=""></a>
+            <a href=""><img src="@Url.Content(Model.Image_Pro)" alt=""></a>
         </div>
         <div class="col-right">
             <form>
@@ -29,26 +27,22 @@
                     @Html.DisplayFor(model => model.Name_Pro, new { @class = "mb-5" })
                 </h4>
                 <h4 class="price-pro">
-                    @Html.DisplayFor(model => model.Price_Pro, new { @class = "mb-5" }).000 vnđ
+                    @Html.DisplayFor(model => model.Price_pro, new { @class = "mb-5" }).000 vnđ
                 </h4>
-                <div class="size-pro">
-                    Size:
-                    <ul>
-                        <li class="size"><button>Size 1</button></li>
-                        <li class="size"><button>Size 2</button></li>
-                        <li class="size"><button>Size 3</button></li>
-                        <li class="size"><button>Size 4</button></li>
-                    </ul>
-                </div>
-                <div class="quantity">
-                    Số lượng :
-                    <button>-</button>
-                    <input type="number" value="1">
-                    <button>+</button>
-                </div>
             </form>
             <div style="display: inline-flex">
-                <div class="cart">@Html.ActionLink("Thêm vào giỏ hàng", "ShowCart", "ShoppingCart")</div>
+                @{var user = Session["User"] as Levent.Models.User1;}
+                @{ if (user == null)
+                    {
+
+                        <div class="cart"><a href="/User/LoginAccount">Thêm vào giỏ hàng</a></div>
+
+                    }
+                    else
+                    {
+                        <div class="cart"><a href="/ShoppingCart/AddToCart/@Model.ID_Pro">Thêm vào giỏ hàng</a></div>
+                    }
+                }
                 <div class="heart-container" title="Like">
                     <input type="checkbox" class="checkbox" id="Give-It-An-Id">
                     <div class="svg-container">

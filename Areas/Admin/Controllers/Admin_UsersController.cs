@@ -10,26 +10,26 @@ namespace Levent.Areas.Admin.Controllers
     public class Admin_UsersController : Controller
     {
         // GET: Admin/Admin_Users
-        Levent_1Entities2 db = new Levent_1Entities2();
+       LeventEntities2 db = new LeventEntities2();
         public ActionResult User_Control()
         {
-            return View(db.AdminUsers.ToList());
+            return View(db.User1.ToList());
         }
         public ActionResult User_Delete(int id)
         {
-            return View(db.AdminUsers.Where(s => s.ID_User == id).FirstOrDefault());
+            return View(db.User1.Where(s => s.ID_User == id).FirstOrDefault());
         }
         [HttpPost]
-        public ActionResult User_Delete(int id, AdminUser user)
+        public ActionResult User_Delete(int id, User1 user)
         {
-            user = db.AdminUsers.Where(s => s.ID_User == id).FirstOrDefault();
-            db.AdminUsers.Remove(user);
+            user = db.User1.Where(s => s.ID_User == id).FirstOrDefault();
+            db.User1.Remove(user);
             db.SaveChanges();
             return RedirectToAction("User_Control");
         }
         public ActionResult User_Detail(int id)
         {
-            return View(db.AdminUsers.Where(s => s.ID_User == id).FirstOrDefault());
+            return View(db.User1.Where(s => s.ID_User == id).FirstOrDefault());
         }
     }
 }

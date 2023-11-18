@@ -39,6 +39,16 @@ input {
     width:100%;
     outline:none;
 }
+
+.inputlogin {
+    border: none;
+    border-bottom: 1px solid #c0c0c0;
+    padding: 10px 0;
+    width: 30%;
+    margin-bottom: 20px;
+    width: 100%;
+    outline: none;
+}
     .check input {
         width: 16px;
         height: 16px;

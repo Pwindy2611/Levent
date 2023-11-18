@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Levent.Models.Product>
+@{
+    ViewBag.Title = "Product_Index_ByCate";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+<link href="~/Assests/css/shop.css" rel="stylesheet" />
+<div class="bc">
+    <div class="con">
+        <ul class="bc-list">
+            <li class="home">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+            <li>/</li>
+            <li class="cuahang">Danh mục</li>
+        </ul>
+    </div>
+</div>
+<section class="sec-80">
+    @*<div class="con">
+        <div class="filterJS">
+            <div class="filter-btn"><i class="ti-filter"></i> Bộ lọc</div>
+            <div style="display:flex">
+                <div class="filter-select">Lọc bởi</div>
+                <div class="filter-select-a">
+                    <a href="">Lọc bởi</a>
+                </div>
+            </div>
+           
+        </div>
+    </div>*@
+    <div style=" display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: space-around;width:100%"  class="pd-list">
+        @foreach (var pro in Model)
+        {
+            <div style="max-width: 350px;margin-top: 35px;">
+                <div class="item">
+                    <div class="top">
+                        <a href="/Product/Products_Detail/@pro.ID_Pro">
+                            <div class="img">
+                                <img src="@Url.Content(pro.Image_Pro)" alt="">
+                                <div class="color">
+                                    <div class="col-btn">
+                                        <div class="chosse-color" style="background-color:#0a0a0a"></div>
+                                        <div class="chosse-color" style="background-color: #F4F4F4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="bot">
+                        <div class="des" style="text-align:center">
+                            <a href="/Product/Products_Detail/@pro.ID_Pro">LEVENTS® @pro.Name_Pro</a>
+                            <div class="price" data="price">@pro.Price_pro.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

@@ -1,0 +1,87 @@
+﻿@*@model IEnumerable<Levent.Models.Product>*@
+@using Levent.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
+@{
+    ViewBag.Title = "Product_Index_Store";
+    Layout = "~/Views/Shared/HomePage.cshtml";
+}
+<link href="~/Assests/css/shop.css" rel="stylesheet" />
+<div class="bc">
+    <div class="con">
+        <ul class="bc-list">
+            <li class="home">@Html.ActionLink("Trang chủ", "Index", "Home")</li>
+            <li>/</li>
+            <li class="cuahang">Cửa hàng</li>
+        </ul>
+    </div>
+</div>
+<section class="sec-80">
+    <div class="con">
+        <div class="filterJS">
+            <div class="filter-btn"><i class="ti-filter"></i> Bộ lọc</div>
+            <div style="display:flex">
+                <div class="filter-select">Lọc bởi</div>
+                <div class="filter-select-a">
+                    <span style="padding-left:10px">Lọc bởi</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boloc">
+        <div style="z-index:3;" class="box-search-main">
+            <ul class="box-search">
+                <li><a href="/Product/MintoMax">Giá tăng</a></li>
+                <li><a href="/Product/MaxtoMin">Giá giảm</a></li>
+                <li><a href="/Product/SearchOption">Search theo giá</a></li>
+            </ul>
+        </div>
+        <div style="position:fixed;top:0;bottom:0;right:0;left:0;z-index:2;" class="overplay-1"></div>
+    </div>
+
+    <div style=" display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: space-around; width:100%;margin-top:20px;" class="pd-list">
+        @foreach (var pro in Model)
+        {
+            <div style="max-width: 350px;margin-top: 35px;">
+                <div class="item">
+                    <div class="top">
+                        <a href="/Product/Products_Detail/@pro.ID_Pro">
+                            <div class="img">
+                                <img src="@Url.Content(pro.Image_Pro)" alt="">
+                                <div class="color">
+                                    <div class="col-btn">
+                                        <div class="chosse-color" style="background-color:#0a0a0a"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="bot">
+                        <div class="des" style="text-align:center">
+                            <a href="/Product/Products_Detail/@pro.ID_Pro">LEVENTS® @pro.Name_Pro</a>
+                            <div class="price" data="price">@pro.Price_pro.000 vnđ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+        @*Trang @(Model.PageCount<Model.PageNumber ? 0 :Model.PageNumber)/@Model.PageCount*@
+        <div class="MenuPage">
+            @Html.PagedListPager(Model, page => Url.Action("Product_Index_Store", new { page = page }))
+        </div>
+        <script>
+            const overplay1 = document.querySelector('.overplay-1')
+            const bar1 = document.querySelector('.filter-select-a')
+            const menu_box1 = document.querySelector('.boloc')
+            function showmodal1() {
+                menu_box1.classList.add('open')
+            }
+            function closedmodal1() {
+                menu_box1.classList.remove('open')
+            }
+            bar1.addEventListener('click', showmodal1)
+            overplay1.addEventListener('click', closedmodal1)
+        </script>
